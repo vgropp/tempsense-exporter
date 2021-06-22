@@ -1,8 +1,9 @@
 # tempsense-exporter
 
-this project is inspired by the https://github.com/kybernetyk/tempsense and is intended to be used with the AVR Temp Sensor made by Diamex GmbH.
+This project is intended to be used with the DS18B20 based USB HID  Temp Sensor made by Diamex GmbH
+(https://www.led-genial.de/USB-Temperatur-Sensor-Tester-fuer-DS18B20-Rev-C)
 
-As seen here: http://www.led-genial.de/USB-Temperatur-Sensor-Tester-fuer-DS18B20 
+It was initially inspired by https://github.com/kybernetyk/tempsense 
 
 # build
 
