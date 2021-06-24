@@ -20,6 +20,8 @@ type Data struct {
 	SensorId      [8]byte
 }
 
+var PowerStr = []string{"parasite", "extern"}
+
 type HidDevices struct {
 	Devices []HidDevice
 }

@@ -39,7 +39,7 @@ func readNextSensor(device hid.HidDevice) (byte, byte) {
 		fmt.Printf("error reading device %v: %v\n", device.Num, err)
 		return 0, 0
 	}
-	fmt.Printf("%v: device %v/%v, sensor %v/%v (%v): %.1f°\n",
-		time.Now().Format(time.Stamp), device.Num, device.DeviceCount, data.SensorCurrent, data.SensorCount, data.SensorsIdHex(), data.Temperature())
+	fmt.Printf("%v: device %v/%v, sensor %v/%v (%v; %v): %.1f°\n",
+		time.Now().Format(time.Stamp), device.Num, device.DeviceCount, data.SensorCurrent, data.SensorCount, data.SensorsIdHex(), hid.PowerStr[data.Power], data.Temperature())
 	return data.SensorCurrent, data.SensorCount
 }
