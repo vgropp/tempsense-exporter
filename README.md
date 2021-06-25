@@ -7,11 +7,21 @@ It was initially inspired by https://github.com/kybernetyk/tempsense
 
 # build
 
+all: `go build -o . ./cmd/...`
+
 tempsense prometheus exporter:
-`go build -o bin/tempsense-exporter cmd/exporter/tempsense-*`
+`go build -o . ./cmd/tempsense-exporter`
 
 simple cli utility:
-`go build -o bin/tempsense src/cli/tempsense.go`
+`go build -o . ./cmd/tempsense-cli`
+
+# install
+
+```
+go get github.com/vgropp/tempsense-exporter
+cd $GOPATH/src/github.com/vgropp/tempsense-exporter
+go install ./cmd/...
+```
 
 # metrics
 
