@@ -23,6 +23,27 @@ cd $GOPATH/src/github.com/vgropp/tempsense-exporter
 go install ./cmd/...
 ```
 
-# metrics
+# running
 
-- `tempsense_temperature_c` with label device, sensors and serial (`tempsense_temperature_c{device="1",sensor="1",serial="28b3bee62b200127"} 27.8`) 
+## exporter
+```
+$GOPATH/bin/tempsense-exporter -h
+Usage of /home/tric/tempsense-exporter:
+  -address string
+        The address to listen on for HTTP requests. (default ":9181")
+```
+
+## cli
+```
+$GOPATH/bin/tempsense-cli
+```
+
+# exported metrics
+
+- `tempsense_temperature_c` with label device, sensors and serial (`tempsense_temperature_c{device="1",sensor="1",serial="28b3bee62b200327"} 27.8`) 
+
+```
+# HELP tempsense_temperature_c shows current temperature as reported by the ds18b20
+# TYPE tempsense_temperature_c gauge
+tempsense_temperature_c{device="1",sensor="1",serial="28b3bee62b200327"} 27.4
+```
