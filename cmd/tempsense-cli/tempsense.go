@@ -10,7 +10,6 @@ func main() {
 	devices, err := hid.LookupDevices()
 	if err != nil {
 		panic(err)
-		return
 	}
 	for i, device := range devices.Devices {
 		fmt.Printf("device found %v: %s[%s]\n", i+1, device.DeviceInfo.Manufacturer, device.DeviceInfo.Product)
