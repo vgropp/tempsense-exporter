@@ -32,6 +32,11 @@ type HidDevice struct {
 	DeviceCount int
 }
 
+type Device interface {
+	ReadSensor() (*Data, error)
+	GetNum() int
+}
+
 func (data Data) SensorsIdHex() string {
 	return hex.EncodeToString(data.SensorId[:])
 }
@@ -66,22 +71,38 @@ func (dev HidDevice) ReadSensor() (*Data, error) {
 		}
 	}(openDevice)
 
-	buf := make([]byte, bufLen)
-	read, err := openDevice.Read(buf)
+	buf, read, err := readToBuffer(openDevice)
 	if err != nil {
-		return nil, fmt.Errorf("could not read from device: %v", err)
+		return nil, err
 	}
+	return parseBuffer(buf, read)
+}
+
+func (dev HidDevice) GetNum() int {
+	return dev.Num
+}
+
+func parseBuffer(buf []byte, read int) (*Data, error) {
 	if read < 0 {
 		return nil, fmt.Errorf("read nothing from device")
 	}
-	if read == bufLen {
-		data, err := decode(buf)
-		if err != nil {
-			return nil, fmt.Errorf("unable to decode %v", err)
-		}
-		return data, nil
+	if read != bufLen {
+		return nil, fmt.Errorf("read only %v bytes", read)
 	}
-	return nil, fmt.Errorf("read only %v bytes", read)
+	data, err := decode(buf)
+	if err != nil {
+		return nil, fmt.Errorf("unable to decode %v", err)
+	}
+	return data, nil
+}
+
+func readToBuffer(openDevice *hid.Device) ([]byte, int, error) {
+	buf := make([]byte, bufLen)
+	read, err := openDevice.Read(buf)
+	if err != nil {
+		return nil, 0, fmt.Errorf("could not read from device: %v", err)
+	}
+	return buf, read, nil
 }
 
 func decode(b []byte) (*Data, error) {
