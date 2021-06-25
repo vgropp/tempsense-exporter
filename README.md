@@ -3,16 +3,18 @@
 This project is intended to provide a prometheus exporter for the DS18B20 based USB HID  Temp Sensor made by Diamex GmbH
 (https://www.led-genial.de/USB-Temperatur-Sensor-Tester-fuer-DS18B20-Rev-C)
 
+As a test util there is a cli version as well, which just outputs all active sensors.
+
 It was initially inspired by https://github.com/kybernetyk/tempsense
 
 # build
+## all
+`go build -o . ./cmd/...`
 
-all: `go build -o . ./cmd/...`
-
-tempsense prometheus exporter:
+## exporter:
 `go build -o . ./cmd/tempsense-exporter`
 
-simple cli utility:
+## simple cli utility:
 `go build -o . ./cmd/tempsense-cli`
 
 # install
