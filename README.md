@@ -50,10 +50,10 @@ $GOPATH/bin/tempsense-cli
 Run the exporter in docker might need some tweaking. First you have to expose the usb device by adding `--device=/dev/bus/usb`. Additional the user in docker needs access to the device file. The default is gid 46 (group plugdev in debian). Override the default gid 46 by adding `-u 1000:<gid>` to your docker run command. The exporter is reachable via port 9181, override this with `-p <port>:9181`
 
 Simple example: 
-`docker run --device=/dev/bus/usb -p 9181:9181`
+`docker run --device=/dev/bus/usb -p 9181:9181 ghcr.io/vgropp/tempsense-exporter:latest`
 
 Full example:
-`docker run --device=/dev/bus/usb -p 9182:9181 -u 1000:46`
+`docker run --device=/dev/bus/usb -p 9182:9181 -u 1000:46 ghcr.io/vgropp/tempsense-exporter:latest`
 
 # exported metrics
 
