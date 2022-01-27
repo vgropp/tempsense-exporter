@@ -8,7 +8,6 @@ RUN CGO_ENABLED=1 go build -o . ./cmd/tempsense-exporter
 
 FROM alpine:latest
 
-RUN apk add strace
 WORKDIR /app
 RUN adduser \
     --disabled-password \
