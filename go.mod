@@ -1,6 +1,6 @@
 module github.com/vgropp/tempsense-exporter
 
-go 1.17
+go 1.20
 
 require (
 	github.com/karalabe/hid v1.0.0
