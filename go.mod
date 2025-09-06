@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/karalabe/hid v1.0.0
 	github.com/prometheus/client_golang v1.20.3
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
