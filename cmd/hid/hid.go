@@ -48,7 +48,7 @@ func (data Data) Temperature() float64 {
 func LookupDevices() (*HidDevices, error) {
 	devices := hid.Enumerate(0x16c0, 0x0480)
 	if len(devices) == 0 {
-		return nil, fmt.Errorf("no temperature sensor found!")
+		return nil, fmt.Errorf("no temperature sensor found")
 	}
 	var hidDevices []HidDevice
 	for i, devInfo := range devices {
