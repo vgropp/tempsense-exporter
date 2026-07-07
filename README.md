@@ -11,7 +11,15 @@ It was initially inspired by https://github.com/kybernetyk/tempsense
 
 ## dependencies
 
-you need a recent golang build environment, gcc and linux headers (for karalabe/hid) to build the tempsense-exporter.
+you need a recent golang build environment, gcc and libudev-dev headers (for [karalabe/hid](https://github.com/karalabe/hid)) to build the tempsense-exporter.
+
+### Ubuntu
+
+A one-liner for Ubuntu:
+
+```bash
+apt-get install golang-go build-essential libudev-dev
+```
 
 ## all
 `go build -o . ./cmd/...`
